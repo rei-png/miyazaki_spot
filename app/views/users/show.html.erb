@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="mt-4">
+    <h2><%= @user.name %>のMyページ</h2>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-5">
+      <table border="solid">
+        <tr>
+          <th>ニックネーム</th><td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th>年代</th><td><%= @user.birth_year %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th><td><%= @user.email %></td>
+        </tr>
+      </table>
+      <%= link_to '編集する', edit_user_path, class: 'btn btn-sm btn-primary mt-4' %>
+    </div>
+  
+    <div class="col-sm-7">
+      <h3>投稿済み口コミ一覧</h3>
+    </div>
+  </div>
+</div>
+

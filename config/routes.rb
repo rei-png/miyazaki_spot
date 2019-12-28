@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   root to: "toppages#index"
   
   resources :contacts, only: [:new, :create]
+  
+  get "singup", to: "users#new"
+  resources :users, only: [:show, :create, :edit, :update, :destroy]
 end
