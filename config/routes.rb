@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   
   resources :contacts, only: [:new, :create]
   
+  get "login", to: "sessions#new"
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
+  
   get "singup", to: "users#new"
   resources :users, only: [:show, :create, :edit, :update, :destroy]
 end

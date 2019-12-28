@@ -21,16 +21,22 @@
   </div>
 </div>
 
-<div class="new_user mt-4 text-center">
-  <%= link_to '新規登録', singup_path, class: 'btn btn-lg btn-primary' %>
-</div>
-<div class="content mt-4">
-  <h2>会員登録で....</h2>
-  <ul>
-    <li>口コミを閲覧できます。みんなの情報で宮崎をもっと楽しもう！！</li>
-    <li>口コミの投稿ができます。口コミを書いて観光地を盛り上げよう！！</li>
-  </ul>
-</div>
+<% if logged_in? %>
+  <div class="mt-4 text-center">
+    <%= link_to 'Myページへ', user_path(current_user), class: 'btn btn-lg btn-primary' %>
+  </div>
+<% else %>
+  <div class="new_user mt-4 text-center">
+    <%= link_to '新規登録', singup_path, class: 'btn btn-lg btn-primary' %>
+  </div>
+  <div class="content mt-4">
+    <h2>会員登録で....</h2>
+    <ul>
+      <li>口コミを閲覧できます。みんなの情報で宮崎をもっと楽しもう！！</li>
+      <li>口コミの投稿ができます。口コミを書いて観光地を盛り上げよう！！</li>
+    </ul>
+  </div>
+<% end %>
 
 <div class="area container-fluid text-center">
   <div class="row">
