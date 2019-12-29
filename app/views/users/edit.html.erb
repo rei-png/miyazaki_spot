@@ -1,2 +1,42 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+  <div class="mt-4">
+    <h2><%= @user.name %> さんのユーザ情報編集</h2>
+  </div>
+  
+  <div class="usersave col-sm-6 offset-sm-3">
+  <%= form_with(model: @user, local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="form-group">
+      <%= f.label :name, "ニックネーム" %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :password_confirmation, "パスワード確認" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
+      
+    <%= f.submit "更新する", class: 'btn btn-primary btn-block' %>
+  <% end %>
+</div>

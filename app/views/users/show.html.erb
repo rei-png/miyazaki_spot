@@ -1,6 +1,6 @@
 <div class="container">
   <div class="mt-4">
-    <h2><%= @user.name %>のMyページ</h2>
+    <h2><%= @user.name %> さんのMyページ</h2>
   </div>
   
   <div class="row">
@@ -16,7 +16,7 @@
           <th>メールアドレス</th><td><%= @user.email %></td>
         </tr>
       </table>
-      <%= link_to '編集する', edit_user_path, class: 'btn btn-sm btn-primary mt-4' %>
+      <%= link_to '編集する', edit_user_path(@user), class: 'btn btn-sm btn-primary mt-4' %>
     </div>
   
     <div class="col-sm-7">
