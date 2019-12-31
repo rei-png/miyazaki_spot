@@ -21,7 +21,9 @@
   
     <div class="col-sm-7">
       <h3>投稿済み口コミ一覧</h3>
+      <%= render "reviews/reviews", reviews: @reviews %>
     </div>
+    <%= link_to '投稿', new_review_path, class: 'btn btn-sm btn-primary mt-4' %>
   </div>
 </div>
 

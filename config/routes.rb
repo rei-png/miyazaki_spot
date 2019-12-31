@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   
   get "singup", to: "users#new"
   resources :users, only: [:show, :create, :edit, :update, :destroy]
+  
+  resources :reviews, only: [:new, :create, :edit, :update, :destroy]
 end

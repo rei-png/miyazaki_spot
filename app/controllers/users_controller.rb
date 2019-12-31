@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @reviews = @user.reviews.order(id: :desc).page(params[:page])
   end
 
   def new
@@ -23,6 +24,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @review = Review.find(params[:id])
   end
 
   def update

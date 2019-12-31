@@ -1,0 +1,23 @@
+<ul class="list-unstyled">
+  <% reviews.each do |review| %>
+    <li class="media mb-3">
+      <img class="mr-2 rounded" src="" alt="">
+      <div class="media-body">
+        <div>
+          <%= link_to review.user.name, user_path(review.user) %> <span class="text-muted">投稿日時 <%= review.created_at %></span>
+        </div>
+        <div>
+          <p>id:<%= review.id %> user_id:<%= review.user_id %></p>
+          <p>タイトル：<%= review.title %></p>
+          <p class="mb-0"><%= review.content %></p>
+        </div>
+        <div>
+          <% if current_user == review.user %>
+            <%= link_to "削除", review, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-sm' %> <%= link_to '編集', edit_review_path(review.id), class: 'btn btn-primary btn-sm' %> 
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate reviews %>
+</ul>
