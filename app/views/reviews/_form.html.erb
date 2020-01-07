@@ -1,51 +1,63 @@
-<div class="row"> 
-  <div class="usersave col-sm-6 offset-sm-3">
-    <%= form_with(model: review, local: true) do |f| %>
-      <%= render 'layouts/error_messages', model: f.object %>
+<div class="container">
+  <div class="row"> 
+    <div class="usersave col-sm-6 offset-sm-3">
+      <%= form_with(model: review, local: true) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
 
-      <% if review.errors.any? %>
-        <div id="error_explanation">
-          <ul>
-            <% review.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
+        <% if review.errors.any? %>
+          <div id="error_explanation">
+            <ul>
+              <% review.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+    
+        <div class="form-group">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title, class: 'form-control' %>
         </div>
-      <% end %>
-    
-      <div class="form-group">
-        <%= f.label :title, "タイトル" %>
-        <%= f.text_field :title, class: 'form-control' %>
-      </div>
       
-      <div class="form-group" id="star">
-        <%= f.label :review_star, "評価", class:'form-label' %>
-        <%= f.hidden_field :review_star, id: :review_star %>
-      </div>
+        <div class="form-group" id="star">
+          <%= f.label :review_star, "評価", class:'form-label' %>
+          <%= f.hidden_field :review_star, id: :review_star %>
+        </div>
   
-      <div class="form-group">
-        <%= f.label :content, "本文" %>
-        <%= f.text_area :content, class: 'form-control' %>
-      </div>
+        <div class="form-group">
+          <%= f.label :content, "本文" %>
+          <%= f.text_area :content, class: 'form-control' %>
+        </div>
       
-      <div class="form-group">
-        <%= f.label :image, "口コミ画像" %>
-        
-      </div>
-      
-      <%= f.submit "投稿する", class: 'btn btn-primary btn-block' %>
-    <% end %>
+        <div class="form-group">
+          <%= f.label :image, "口コミ画像" %>
+          <%= f.file_field :image, class: 'form-control' %>
+        </div>
     
-    <script>
-      $('#star').raty({
-        size     : 36,
-        starOff:  '/assets/star-off.png',
-        starOn : '/assets/star-on.png',
-        starHalf: '/assets/star-half.png',
-        scoreName: 'post[review_star]',
-        half: true,
-      });
+        <p><%= image_tag review.image.thumb100.url if review.image? %></p>    
+        <div class="field">
+          <% if review.persisted? && review.image? %>
+            <label><%= f.check_box :remove_image %>画像を削除</label>
+          <% end %>
+        </div>
+      
+        <%= f.submit "投稿する", class: 'btn btn-primary' %>
+      <% end %>
+      
+      
+      
+    
+      <script>
+        $('#star').raty({
+          size     : 36,
+          starOff:  '/assets/star-off.png',
+          starOn : '/assets/star-on.png',
+          starHalf: '/assets/star-half.png',
+          scoreName: 'post[review_star]',
+          half: true,
+        });
       </script>
       
+    </div>
   </div>
 </div>

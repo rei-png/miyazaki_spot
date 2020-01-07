@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :set_review, only: [:edit, :update, :destroy]
   
   def new
     @review = current_user.reviews.build
@@ -19,11 +20,9 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:id])
   end
 
   def update
-    @review = Review.find(params[:id])
     if @review.update(review_params)
       flash[:success] = "正常に更新されました"
       redirect_to root_url
@@ -41,8 +40,12 @@ class ReviewsController < ApplicationController
   
   private
   
+  def set_review
+    @review = Review.find(params[:id])
+  end
+  
   def review_params
-    params.require(:review).permit(:title, :review_star, :content)
+    params.require(:review).permit(:title, :review_star, :content, :image, :remove_image)
   end
   
   def correct_user

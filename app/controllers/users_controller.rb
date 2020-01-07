@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update]
   
   def show
-    @user = User.find(params[:id])
-    @reviews = @user.reviews.order(id: :desc).page(params[:page])
+    @reviews = @user.reviews.order(id: :desc).page(params[:page]).per(3)
   end
 
   def new
@@ -23,13 +23,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    @review = Review.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
-    
     if @user.update(user_params)
       flash[:success] = "正常に更新されました。"
       redirect_to @user
@@ -44,7 +40,11 @@ class UsersController < ApplicationController
   
   private
   
+  def set_user
+    @user = User.find(params[:id])
+  end
+  
   def user_params
-    params.require(:user).permit(:name, :birth_year, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :birth_year, :email, :password, :password_confirmation, :user_image, :remove_user_image)
   end
 end

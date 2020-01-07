@@ -1,0 +1,110 @@
+.singup h1 {
+  margin-top: 50px; 
+}
+.singup form {
+  margin-top: 20px;
+}
+.singup p {
+  margin-top: 20px;
+}
+.singup {
+    padding: 0.5em 1em;
+    margin: 4em;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+}
+
+.join2{
+  margin-left: auto;
+}
+.join2 h2 {
+  font-size: 40px;
+  font-family: "Nico Moji";
+  color: #20b2aa;
+}
+.join2 li {
+  font-size: 25px;
+  margin-left: 30px;
+}
+
+.usershow h2 {
+  font-family: "M PLUS Rounded 1c";
+  color: #ffaf60;
+}
+
+.usershow table {
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.usershow card {
+  margin-top: 20px;
+}
+
+.usershow hr {
+  width: 100%;
+  border-top: 5px solid #baff75;
+}
+
+.review hr {
+  width: 100%;
+  border-top: 2px solid #ffff56;
+} 
+
+.editbt {
+  margin-left: 50px;
+  margin-bottom: 20px;
+  background: #ffa851;
+}
+
+.useredit h2 {
+  font-family: "M PLUS Rounded 1c";
+  color: #ffaf60;
+}
+
+.useredit hr {
+  width: 100%;
+  border-top: 5px solid #baff75;
+}
+
+.deletebt {
+  background: #ff3838;
+}
+
+table {
+  margin: 20px auto;
+}
+.tab th {
+  background: #e9727e;
+  border: solid 1px #ccc;
+  color: #fff;
+  padding: 10px;
+}
+.tab td {
+　border: solid 1px #ccc;
+　padding: 10px;
+}
+ 
+@media screen and (max-width: 640px) {
+  .last td:last-child {
+    border-bottom: solid 1px #ccc;
+    width: 100%;
+  }
+  .tab {
+    width: 80%;
+  }
+  .tab th,
+  .tab td {
+　　border-bottom: none;
+    display: block;
+    width: 100%;
+  }
+}
+
+

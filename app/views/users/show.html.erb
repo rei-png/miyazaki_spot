@@ -1,29 +1,41 @@
-<div class="container">
+<div class="usershow container">
   <div class="mt-4">
     <h2><%= @user.name %> さんのMyページ</h2>
   </div>
-  
-  <div class="row">
-    <div class="col-sm-5">
-      <table border="solid">
+  <hr>
+  <div class="row justify-content-around">
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <div class="text-center">
+          <% if @user.user_image? %>
+            <%= image_tag @user.user_image.thumb.url, :size => "300x300" %>
+          <% else %>
+            <%= image_tag "/assets/akazukin.png", :size => "300x300" %>
+          <% end %>
+        </div>
+      
+      <table class="tab" border="solid">
         <tr>
-          <th>ニックネーム</th><td><%= @user.name %></td>
+          <th>ニックネーム</th>
+          <td><%= @user.name %></td>
         </tr>
         <tr>
-          <th>年代</th><td><%= @user.birth_year %></td>
+          <th>年代</th>
+          <td><%= @user.birth_year %></td>
         </tr>
-        <tr>
-          <th>メールアドレス</th><td><%= @user.email %></td>
+        <tr class="last">
+          <th>メールアドレス</th>
+          <td><%= @user.email %></td>
         </tr>
       </table>
-      <%= link_to '編集する', edit_user_path(@user), class: 'btn btn-sm btn-primary mt-4' %>
+      <%= link_to '編集する', edit_user_path(@user), class: 'btn btn-sm editbt' %>
+      <%= link_to '投稿', new_review_path, class: 'btn btn-sm btn-primary mt-4' %>
     </div>
   
-    <div class="col-sm-7">
+    <div class="review col-xs-12 col-sm-12 col-md-6">
       <h3>投稿済み口コミ一覧</h3>
+      <hr>
       <%= render "reviews/reviews", reviews: @reviews %>
     </div>
-    <%= link_to '投稿', new_review_path, class: 'btn btn-sm btn-primary mt-4' %>
   </div>
 </div>
 

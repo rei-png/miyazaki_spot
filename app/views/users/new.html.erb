@@ -1,50 +1,63 @@
-<div class="content mt-4">
-  <h1>会員登録で....</h1>
+<div class="container mt-4 join2">
+  <h2>会員登録で....</h2>
   <ul>
     <li>口コミを閲覧できます。みんなの情報で宮崎をもっと楽しもう！！</li>
     <li>口コミの投稿ができます。口コミを書いて観光地を盛り上げよう！！</li>
   </ul>
 </div>
 
-<div class="usersave col-sm-6 offset-sm-3">
-  <%= form_with(model: @user, local: true) do |f| %>
-    <%= render 'layouts/error_messages', model: f.object %>
+<div class="container-fluid singup">
+  <div class="text-center mt-4">
+    <h1>新規登録</h1>
+  </div>
+  
+  <div class="row form">
+    <div class="col-sm-6 offset-sm-3">
+      <%= form_with(model: @user, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
 
-    <% if @user.errors.any? %>
-      <div id="error_explanation">
-        <ul>
-          <% @user.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
   
-    <div class="form-group">
-      <%= f.label :name, "ニックネーム" %>
-      <%= f.text_field :name, class: 'form-control' %>
-    </div>
+        <div class="form-group">
+          <%= f.label :name, "ニックネーム" %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
     
-    <div class="form-group">
-      <%= f.label :birth_year, "誕生西暦" %>
-      <%= f.text_field :birth_year, class: 'form-control' %>
-    </div>
+        <div class="form-group">
+          <%= f.label :birth_year, "年代" %>
+          <%= f.select :birth_year, ["10代", "20代", "30代", "40代", "50代", "60代", "70代", "80代以上"], {include_blank: '選択してください'}, class: 'form-control' %>
+        </div>
   
-    <div class="form-group">
-      <%= f.label :email, "メールアドレス" %>
-      <%= f.email_field :email, class: 'form-control' %>
-    </div>
+        <div class="form-group">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
   
-    <div class="form-group">
-      <%= f.label :password, "パスワード" %>
-      <%= f.password_field :password, class: 'form-control' %>
-    </div>
+        <div class="form-group">
+          <%= f.label :password, "パスワード" %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
   
-    <div class="form-group">
-      <%= f.label :password_confirmation, "パスワード確認" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-    </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation, "パスワード確認" %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+    
+        <div class="form-group">
+          <%= f.label :user_image, "プロフィール写真" %>
+          <%= f.file_field :user_image, class: 'form-control' %>
+        </div>
       
-    <%= f.submit "登録", class: 'btn btn-primary btn-block' %>
-  <% end %>
+        <%= f.submit "登録", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div> 
 </div>

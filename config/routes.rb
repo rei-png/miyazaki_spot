@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create, :edit, :update, :destroy]
   
   resources :reviews, only: [:new, :create, :edit, :update, :destroy]
+  
+  resources :spots, only: [:index, :show]
 end
