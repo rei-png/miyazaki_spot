@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: miyazaki_spots_production
   username: miyazaki_spots
   password: <%= ENV['MIYAZAKI_SPOTS_DATABASE_PASSWORD'] %>
