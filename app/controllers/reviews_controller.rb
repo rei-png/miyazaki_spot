@@ -5,36 +5,37 @@ class ReviewsController < ApplicationController
   
   def new
     @review = current_user.reviews.build
+    @spot = params[:spot_id]
   end
 
   def create
     @review = current_user.reviews.build(review_params)
     if @review.save
-      flash[:success] = '正常に投稿されました'
-      redirect_to root_url
+      #flash[:success] = '正常に投稿されました'
+      redirect_to spot_path(review_params[:spot_id])
     else
       @review = current_user.reviews.order(id: :desc).page(params[:page])
-      flash.now[:danger] = '投稿されませんでした'
+      #flash.now[:danger] = '投稿されませんでした'
       render :new
     end
   end
 
   def edit
+    @spot = params[:spot_id]
   end
 
   def update
     if @review.update(review_params)
-      flash[:success] = "正常に更新されました"
-      redirect_to root_url
+      redirect_to spot_path(review_params[:spot_id])
     else
-      flash.now[:danger] = "更新されませんでした"
+      #flash.now[:danger] = "更新されませんでした"
       render :edit
     end
   end
 
   def destroy
     @review.destroy
-    flash[:success] = "口コミを削除しました。"
+    #flash[:success] = "口コミを削除しました。"
     redirect_back(fallback_location: root_path)
   end
   
@@ -45,7 +46,7 @@ class ReviewsController < ApplicationController
   end
   
   def review_params
-    params.require(:review).permit(:title, :review_star, :content, :image, :remove_image)
+    params.require(:review).permit(:spot_id, :title, :review_star, :content, :image, :remove_image)
   end
   
   def correct_user

@@ -1,9 +1,6 @@
 <div class="container mt-4 join2">
   <h2>会員登録で....</h2>
-  <ul>
-    <li>口コミを閲覧できます。みんなの情報で宮崎をもっと楽しもう！！</li>
-    <li>口コミの投稿ができます。口コミを書いて観光地を盛り上げよう！！</li>
-  </ul>
+  <p>このサイトでは、宮崎県のおすすめ観光地を紹介しています！会員登録をすることで口コミを投稿することができます。あなたの口コミでぜひ観光地を盛り上げてください！！</p>
 </div>
 
 <div class="container-fluid singup">
@@ -14,18 +11,8 @@
   <div class="row form">
     <div class="col-sm-6 offset-sm-3">
       <%= form_with(model: @user, local: true) do |f| %>
-      <%= render 'layouts/error_messages', model: f.object %>
+        <%= render 'layouts/error_messages', model: f.object %>
 
-        <% if @user.errors.any? %>
-          <div id="error_explanation">
-            <ul>
-              <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-  
         <div class="form-group">
           <%= f.label :name, "ニックネーム" %>
           <%= f.text_field :name, class: 'form-control' %>

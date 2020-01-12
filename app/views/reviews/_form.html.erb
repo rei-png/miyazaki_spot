@@ -3,17 +3,12 @@
     <div class="usersave col-sm-6 offset-sm-3">
       <%= form_with(model: review, local: true) do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
-
-        <% if review.errors.any? %>
-          <div id="error_explanation">
-            <ul>
-              <% review.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-    
+        
+        <div class="form-group">
+          <%= f.label :spot_id, "観光地"%>
+          <%= f.collection_select :spot_id, Spot.all, :id, :name, {selected: spot}, {class: "form-control"} %>
+        </div>
+        
         <div class="form-group">
           <%= f.label :title, "タイトル" %>
           <%= f.text_field :title, class: 'form-control' %>
@@ -53,7 +48,7 @@
           starOff:  '/assets/star-off.png',
           starOn : '/assets/star-on.png',
           starHalf: '/assets/star-half.png',
-          scoreName: 'post[review_star]',
+          scoreName: 'review[review_star]',
           half: true,
         });
       </script>

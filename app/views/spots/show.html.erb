@@ -1,0 +1,42 @@
+<div class="return">
+  <%= link_to "<< 観光地一覧に戻る", spots_path %>
+</div>
+
+<div class="info container mt-4">
+  <h2><%= @spot.name %>の基本情報</h2>
+  <hr>
+  <div class="text-center">
+    <%=image_tag @spot.spot_image, class: "spotimg" %>
+ 
+    <table border="solid">
+      <tr>
+        <th>所在地</th>
+        <td><%= @spot.address %></td>
+      </tr>
+      <tr>
+        <th>料金</th>
+        <td><%= @spot.admission %></td>
+      </tr>
+      <tr>
+      <th>営業時間</th>
+        <td><%= @spot.open_hour %></td>
+      </tr>
+      <th>休日</th>
+        <td><%= @spot.holiday %></td>
+      </tr>
+      <th>HP</th>
+        <td><a href="<%= @spot.url %>" target="_blank"><%= @spot.url %></a></td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="text-center">
+    <%= link_to '口コミを投稿する', new_review_path(spot_id: @spot.id), class: 'btn btn-sm btn-primary mt-4' %>
+  </div>
+  
+  <div class="spot-review">
+    <h4><%= @spot.name%>の口コミ</h4>
+    <hr>
+    <%= render "reviews/reviews", reviews: @reviews %>
+  </div>
+</div>

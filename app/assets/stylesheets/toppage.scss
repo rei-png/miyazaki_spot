@@ -97,14 +97,20 @@ hr {
 
 .banner p {
   padding-bottom: 20px;
+  font-size: 15px;
 }
 
-.join h2 {
+.banner img {
+  max-width: 800px;
+  width: 100%;
+}
+
+.join3 h2 {
   font-size: 40px;
-  font-family: "Nico Moji";
+  font-family: "M PLUS Rounded 1c";
   color: #20b2aa;
 }
-.join li {
+.join3 p {
   font-size: 25px;
   margin-left: 20px;
 }
@@ -127,10 +133,14 @@ hr {
   width: 100%;
   left: 0; 
   top: calc(50% - 25px); 
-  text-align: center; 
-  color: darkblue; 
+  text-align: center;
   font-weight: bold; 
   line-height: 50px;
+}
+
+.link {
+  color: #000000;
+  font-size: 30px;
 }
 
 

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   
   def show
     @reviews = @user.reviews.order(id: :desc).page(params[:page]).per(3)
+    @spot = Spot.find(params[:id])
   end
 
   def new
@@ -14,10 +15,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:success] = 'ユーザを登録しました。'
+      #flash[:success] = 'ユーザを登録しました。'
       redirect_to @user
     else
-      flash.now[:danger] = 'ユーザの登録に失敗しました。'
+      #flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
     end
   end
@@ -27,10 +28,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:success] = "正常に更新されました。"
+      #flash[:success] = "正常に更新されました。"
       redirect_to @user
     else
-      flash.now[:danger] = "更新されませんでした。"
+      #flash.now[:danger] = "更新されませんでした。"
       render :edit
     end
   end

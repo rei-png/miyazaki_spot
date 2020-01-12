@@ -55,17 +55,14 @@
       <%= link_to '新規登録', singup_path, class: 'btn btn-lg btn-primary joinbt' %>
     </div>
     <hr>
-    <div class="container">
+    <div class="join3 container">
       <h2>会員登録してみらんね？</h2>
-      <ul>
-        <li>口コミを閲覧できます。みんなの情報で宮崎をもっと楽しもう！！</li>
-        <li>口コミの投稿ができます。口コミを書いて観光地を盛り上げよう！！</li>
-      </ul>
+      <p>このサイトでは、宮崎県のおすすめ観光地を紹介しています！会員登録をすることで口コミを投稿することができます。あなたの口コミでぜひ観光地を盛り上げてください！！</p>
     </div>
     <hr>
   <% end %>
-  <div class="banner text-center">
-    <a href="http://www.hinata-miyazaki.jp/"><img src="/assets/hinata.jpg" alt="日本のひなた宮崎県」のホームページへのリンク"></a>
+  <div class="container banner text-center">
+    <a href="http://www.hinata-miyazaki.jp/" target="_blank"><img src="/assets/hinata.jpg" alt="日本のひなた宮崎県」のホームページへのリンク"></a>
     <p>※ここ↑をクリックで「日本のひなた宮崎県」のホームページへ</p>
   </div>
 </div>  
@@ -75,16 +72,16 @@
   <hr>
   <div class="row">
     <div class="area col-xs-12 col-sm-6 col-md-4">
-      <a href="#"><img src="assets/takachiho.jpg"></a>
-      <p>高千穂エリア</p>
+      <img src="assets/takachiho.jpg">
+      <p><%= link_to "高千穂エリア", spots_path(area: "takachiho"), class: "link" %></p>
     </div>
     <div class="area col-xs-12 col-sm-6 col-md-4">
-      <a href="#"><img src="assets/moai.jpg"></a>
-      <p>青島・日南エリア</p>
+      <img src="assets/moai.jpg">
+      <p><%= link_to "青島・日南エリア", spots_path(area: "aoshima"), class: "link" %></p>
     </div>
     <div class="area col-sm-12 col-md-4">
-      <a href="#"><img src="assets/ikoma.jpg"></a>
-      <p>えびの・都城エリア</p>
+      <img src="assets/ikoma.jpg">
+      <p><%= link_to "えびの・都城エリア", spots_path(area: "ebino"), class: "link" %></p>
     </div>
   </div>
 </div>

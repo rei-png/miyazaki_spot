@@ -11,8 +11,8 @@
           <%= link_to review.user.name, user_path(review.user) %> <span class="text-muted">投稿日時 <%= review.created_at.to_s(:datetime_jp) %></span>
         </div>
         <div>
-          <p>タイトル：<%= review.title %></p>
-          <div id="star-rate-<%= review.id %>"></div>
+          <p class="font-weight-bolder">タイトル：<%= review.title %></p>
+          <div id="star-rate-<%= review.id %>" class="star"></div>
           
           <script>
           $('#star-rate-<%= review.id %>').raty({
@@ -26,7 +26,7 @@
           });
           </script>  
           
-          <p class="mb-0"><%= review.content %></p>
+          <p class="mt-2"><%= review.content %></p>
           <p><%= image_tag review.image.thumb100.url if review.image? %></p>
         </div>
         <div>

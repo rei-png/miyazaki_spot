@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_07_113401) do
+ActiveRecord::Schema.define(version: 2020_01_12_123157) do
 
   create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2020_01_07_113401) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "spot_id"
+    t.index ["spot_id"], name: "index_reviews_on_spot_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -43,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_113401) do
     t.string "holiday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "url"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,5 +58,6 @@ ActiveRecord::Schema.define(version: 2020_01_07_113401) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "reviews", "spots"
   add_foreign_key "reviews", "users"
 end

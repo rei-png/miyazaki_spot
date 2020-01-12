@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <% @spots.each do |spot| %>
+    <div class="card mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <%=image_tag spot.spot_image, class: "card-img" %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title pb-0"><%= spot.name %></h3>
+            <p><small class="text-muted"><%= spot.area %>エリア</small></p>
+            <p class="card-text"><%= spot.content %></p>
+            <%= link_to "基本情報・口コミを見る>>", spot %>
+          </diV>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
